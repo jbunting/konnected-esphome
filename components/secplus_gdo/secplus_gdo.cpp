@@ -53,7 +53,6 @@ namespace secplus_gdo {
             gdo->set_sync_state(status->synced);
             break;
         case GDO_CB_EVENT_LIGHT:
-            gdo->set_light_state(status->light);
             break;
         case GDO_CB_EVENT_LOCK:
             gdo->set_lock_state(status->lock);
@@ -155,10 +154,6 @@ namespace secplus_gdo {
     void GDOComponent::set_sync_state(bool synced) {
         if (this->door_) {
             this->door_->set_sync_state(synced);
-        }
-
-        if (this->light_) {
-            this->light_->set_sync_state(synced);
         }
 
         if (this->lock_) {

@@ -23,7 +23,6 @@
 #include "select/gdo_select.h"
 #include "switch/gdo_switch.h"
 #include "cover/gdo_door.h"
-#include "light/gdo_light.h"
 #include "lock/gdo_lock.h"
 #include "gdo.h"
 
@@ -67,9 +66,6 @@ namespace secplus_gdo {
         void register_door(GDODoor *door) { this->door_ = door; }
         void set_door_state(gdo_door_state_t state, float position) { if (this->door_) { this->door_->set_state(state, position); } }
 
-        void register_light(GDOLight *light) { this->light_ = light; }
-        void set_light_state(gdo_light_state_t state) { if (this->light_) { this->light_->set_state(state); } }
-
         void register_lock(GDOLock *lock) { this->lock_ = lock; }
         void set_lock_state(gdo_lock_state_t state) { if (this->lock_) { this->lock_->set_state(state); } }
 
@@ -103,7 +99,6 @@ namespace secplus_gdo {
         std::function<void(bool)>                    f_motor{nullptr};
         std::function<void(bool)>                    f_sync{nullptr};
         GDODoor*                                     door_{nullptr};
-        GDOLight*                                    light_{nullptr};
         GDOLock*                                     lock_{nullptr};
         GDONumber*                                   open_duration_{nullptr};
         GDONumber*                                   close_duration_{nullptr};
